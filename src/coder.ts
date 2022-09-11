@@ -1,5 +1,5 @@
 import {utils} from "ethers"
-import {Fragment, JsonFragment} from "@ethersproject/abi";
+import {EventFragment, Fragment, FunctionFragment, JsonFragment} from "@ethersproject/abi";
 
 
 /*
@@ -13,7 +13,7 @@ export class AbiCoder {
         this.iface = new utils.Interface(abi);
     }
 
-    getFunctionSigHash(fn: utils.FunctionFragment | string): string {
+    getFunctionSigHash(fn: FunctionFragment | string): string {
         const result = this.iface.getSighash(fn)
         return result
     }
@@ -37,6 +37,32 @@ export class AbiCoder {
     getFunctionSignature(data: string): string {
         const method = data.slice(0, 10)
         const result = this.iface.getFunction(method)
+        return result.format()
+    }
+
+    getEventTopic(event: EventFragment| string): string {
+        const result = this.iface.getEventTopic(event)
+        return result
+    }
+
+    getMapOfEventTopic(): Map<string, string> {
+        const map = new Map()
+        for (const [name, val] of Object.entries(this.iface.events)) {
+            map.set(this.getEventTopic(name), name)
+        }
+        return map
+    }
+
+    getListOfEventTopic():Array<string>{
+        const list = []
+        for (const [name, val] of Object.entries(this.iface.events)) {
+            list.push(this.getEventTopic(name))
+        }
+        return list
+    }
+
+    getEventSignature(eventHash:string): string {
+        const result = this.iface.getEvent(eventHash)
         return result.format()
     }
 }

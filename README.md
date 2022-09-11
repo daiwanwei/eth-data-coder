@@ -8,12 +8,15 @@
 
 - [x] abi
     - [x] getFunctionSighash
+    - [x] getEventTopic
 - [x] decode
     - [x] decodeData
-    - [ ] decodeLog
+    - [x] decodeLog
 - [x] erc20
   - [x] decodeData
   - [x] getFunctionSighash
+  - [x] decodeLog
+  - [x] getEventTopic
 
 ## How To Run This Project
 
