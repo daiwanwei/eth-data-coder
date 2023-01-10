@@ -14,7 +14,7 @@ export default {
   // cacheDirectory: "/private/var/folders/gr/0ktdp02n5sd8vdyn9d5l6jd40000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
+  // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -164,7 +164,7 @@ export default {
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
-  testRegex: ["(/tests/.*|(\\.|/)(test|spec))\\.tsx?$"],
+  // testRegex: [],
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
